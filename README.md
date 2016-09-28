@@ -36,6 +36,6 @@ Assuming you have Python 3 installed, the following attitional modules are requi
 - pip install pyqt5
 
 ### Grid simulator
-For troubleshooting, of if you would like to run Grid Control without a Grid device, please have a look at my grid simulator available [here](https://github.com/akej74/grid-simulator)
+For troubleshooting, or if you would like to run Grid Control without a Grid device, please have a look at my grid simulator available [here](https://github.com/akej74/grid-simulator)
  
  
