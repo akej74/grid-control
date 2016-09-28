@@ -3,7 +3,7 @@ Grid Control is a free and open source alternative to the CAM application from N
 
 <img src="https://github.com/akej74/grid-control/blob/master/screenshots/screenshot_1.png" width="600">
 
-### Hightlights
+### Highlights
 - Simple to use and resource efficient
 - Written in Python 3 using QT5 for the user interface
 - Uses OpenHardwareMonitor to read sensor values
