@@ -10,7 +10,7 @@ Grid Control is a free and open source alternative to the CAM application from N
 
 ### Stand-alone installation
 Grid Control is available as a stand-alone application (Python does not need to be installed):
-- Download the latest release from [grid-control/release](https://github.com/akej74/grid-control/tree/master/screenshots)
+- Download the latest release from [Releases](https://github.com/akej74/grid-control/releases)
 - Unzip file
 - Run "gridcontrol.exe"
 
