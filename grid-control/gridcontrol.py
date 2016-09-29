@@ -310,6 +310,13 @@ class GridControl(QtWidgets.QMainWindow):
                 self.ui.horizontalSliderFan5.setEnabled(True)
                 self.ui.horizontalSliderFan6.setEnabled(True)
 
+            # Enable other UI elements
+            self.ui.radioButtonManual.setEnabled(True)
+            self.ui.radioButtonAutomatic.setEnabled(True)
+            self.ui.checkBoxSimulateTemp.setEnabled(True)
+            self.ui.horizontalSliderCPUTemp.setEnabled(True)
+            self.ui.horizontalSliderGPUTemp.setEnabled(True)
+
             # Initialize the Grid+ V2 device
             if grid.initialize_grid(self.ser, self.lock):
                 # Set the initial fan speeds based on UI values
@@ -337,7 +344,7 @@ class GridControl(QtWidgets.QMainWindow):
                 # Update status in UI
                 self.ui.labelPollingStatus.setText('<b><font color="red">Stopped</font></b>')
 
-        # If no serial port is selected, disable horizontal sliders
+        # If no serial port is selected, disable UI elements
         else:
             self.ui.horizontalSliderFan1.setEnabled(False)
             self.ui.horizontalSliderFan2.setEnabled(False)
@@ -345,6 +352,13 @@ class GridControl(QtWidgets.QMainWindow):
             self.ui.horizontalSliderFan4.setEnabled(False)
             self.ui.horizontalSliderFan5.setEnabled(False)
             self.ui.horizontalSliderFan6.setEnabled(False)
+            self.ui.radioButtonManual.setEnabled(False)
+            self.ui.radioButtonAutomatic.setEnabled(False)
+            self.ui.checkBoxSimulateTemp.setEnabled(False)
+            self.ui.horizontalSliderCPUTemp.setEnabled(False)
+            self.ui.horizontalSliderGPUTemp.setEnabled(False)
+            self.ui.horizontalSliderCPUTemp.setValue(0)
+            self.ui.horizontalSliderGPUTemp.setValue(0)
 
     def reset_data(self):
         """Reset fan rpm and voltage to "---" and activate the red status icon.
@@ -379,8 +393,8 @@ class GridControl(QtWidgets.QMainWindow):
         self.ui.lcdNumberCurrentGPU.display(0)
 
         # Update status in UI
-        self.ui.labelPollingStatus.setText('<b><font color="red">Disconnected</font></b>')
-        self.ui.labelHWMonStatus.setText('<b><font color="red">Disconnected</font></b>')
+        self.ui.labelPollingStatus.setText('<b><font color="red">Stopped</font></b>')
+        self.ui.labelHWMonStatus.setText('<b><font color="red">---</font></b>')
 
     def initialize_fans(self):
         """Initialize fans to the initial slider values."""
@@ -517,7 +531,7 @@ class GridControl(QtWidgets.QMainWindow):
 
             # Update CPU and GPU values from current horizontal slider values
             self.ui.lcdNumberCurrentCPU.display(self.ui.horizontalSliderCPUTemp.value())
-            self.ui.lcdNumberCurrentGPU.display(self.ui.horizontalSliderCPUTemp.value())
+            self.ui.lcdNumberCurrentGPU.display(self.ui.horizontalSliderGPUTemp.value())
 
             # Disconnect temperature signals from polling thread
             self.thread.cpu_temp_signal.disconnect(self.ui.lcdNumberCurrentCPU.display)
@@ -676,7 +690,7 @@ if __name__ == "__main__":
     win = GridControl()
 
     # Set program version
-    win.setWindowTitle("Grid Control 1.0")
+    win.setWindowTitle("Grid Control 1.0.2")
 
     # Show window
     win.show()

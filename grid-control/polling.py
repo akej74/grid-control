@@ -221,7 +221,7 @@ class PollingThread(QtCore.QThread):
 
                 # If both CPU and GPU temp are 0, set OpenHardwareMonitor status to "Disconnected"
                 if current_cpu_temp == current_gpu_temp == 0:
-                    self.hwmon_status_signal.emit('<b><font color="red">Disconnected</font></b>')
+                    self.hwmon_status_signal.emit('<b><font color="red">---</font></b>')
                 else:
                     self.hwmon_status_signal.emit('<b><font color="green">Connected</font></b>')
 
