@@ -46,4 +46,8 @@ QT Creator (including QT Designer for UI design) can be downloaded [here](https:
 ### Grid simulator
 For troubleshooting, or if you would like to run Grid Control without a Grid device, please have a look at my grid simulator available [here](https://github.com/akej74/grid-simulator).
  
- 
+### Inspiration from other projects
+I would like to thank the authors of the following projects that have been helpful in understanding the communication protocol the Grid uses.
+- [gridfan](https://github.com/CapitalF/gridfan) by CapitalF
+- [CamSucks](https://github.com/RoelGo/CamSucks) by RoelGo
+
