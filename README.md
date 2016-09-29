@@ -11,7 +11,8 @@ Grid Control is a free and open source alternative to the CAM application from N
 - Simple to use and resource efficient
 - Written in Python 3 using QT5 for the user interface
 - Uses OpenHardwareMonitor to read sensor values
-- Individual fan control (manual or automatic with control points) 
+- Individual fan control (manual or automatic with control points)
+- Support the Grid+ V2 device
 
 ### Stand-alone installation
 Grid Control is available as a stand-alone application (Python does not need to be installed):
@@ -34,7 +35,7 @@ Driver installation:
  - A driver is needed, see "MCP2200/MCP2221 Windows Driver & Installer" on the [product page](http://www.microchip.com/wwwproducts/en/en546923)
  
 ### Python environment
-Assuming you have Python 3 installed, the following attitional modules are required (can be installed with "pip").
+Assuming you have Python 3 installed, the following additional modules are required (can be installed with "pip").
 - pip install pyserial
 - pip install wmi
 - pip install pypiwin32
