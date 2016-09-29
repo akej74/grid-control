@@ -40,6 +40,9 @@ Assuming you have Python 3 installed, the following attitional modules are requi
 - pip install pypiwin32
 - pip install pyqt5
 
+### QT Creator
+QT Creator (including QT Designer for UI design) can be downloaded [here](https://www.qt.io/download-open-source/).
+
 ### Grid simulator
 For troubleshooting, or if you would like to run Grid Control without a Grid device, please have a look at my grid simulator available [here](https://github.com/akej74/grid-simulator).
  
