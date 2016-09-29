@@ -54,6 +54,8 @@ class PollingThread(QtCore.QThread):
     cpu_temp_signal = QtCore.pyqtSignal(int)
     gpu_temp_signal = QtCore.pyqtSignal(int)
 
+    hwmon_status_signal = QtCore.pyqtSignal(str)
+
     # Signal to indicate fan speed should be updated
     update_signal = QtCore.pyqtSignal()
 
@@ -210,8 +212,18 @@ class PollingThread(QtCore.QThread):
                 temperature_sensors = openhwmon.get_temperature_sensors(hwmon_thread_wmi)
 
                 # Emit signals with current CPU and GPU temperatures
-                self.cpu_temp_signal.emit(self.calculate_temp(temperature_sensors, "cpu"))
-                self.gpu_temp_signal.emit(self.calculate_temp(temperature_sensors, "gpu"))
+                current_cpu_temp = self.calculate_temp(temperature_sensors, "cpu")
+                current_gpu_temp = self.calculate_temp(temperature_sensors, "gpu")
+
+                # Emit temperature signals
+                self.cpu_temp_signal.emit(current_cpu_temp)
+                self.gpu_temp_signal.emit(current_gpu_temp)
+
+                # If both CPU and GPU temp are 0, set OpenHardwareMonitor status to "Disconnected"
+                if current_cpu_temp == current_gpu_temp == 0:
+                    self.hwmon_status_signal.emit('<b><font color="red">Disconnected</font></b>')
+                else:
+                    self.hwmon_status_signal.emit('<b><font color="green">Connected</font></b>')
 
                 # Read rpm for all fans
                 fans_rpm = grid.read_fan_rpm(self.ser, self.lock)

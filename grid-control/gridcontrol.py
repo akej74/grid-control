@@ -225,8 +225,7 @@ class GridControl(QtWidgets.QMainWindow):
         self.thread.update_signal.connect(self.update_fan_speed)
 
         # Connect CPU and GPU temperature signals (from polling thread) to function for updating HWMon status
-        self.thread.cpu_temp_signal.connect(self.set_hwmon_status)
-        self.thread.gpu_temp_signal.connect(self.set_hwmon_status)
+        self.thread.hwmon_status_signal.connect(self.ui.labelHWMonStatus.setText)
 
         # Connect exception signal to show exception message from running thread
         # This is needed as it's not possible to show a message box widget from the QThread directly
@@ -551,14 +550,6 @@ class GridControl(QtWidgets.QMainWindow):
         # TODO: Add apply button
         self.thread.update_sensors(self.get_cpu_sensor_ids(), self.get_gpu_sensor_ids())
         self.init_communication()
-
-    def set_hwmon_status(self, temperature):
-        """Update OpenHardwareMonitor status based on current CPU and GPU temperatures."""
-
-        if temperature == 0:
-            self.ui.labelHWMonStatus.setText('<b><font color="red">Disconnected</font></b>')
-        else:
-            self.ui.labelHWMonStatus.setText('<b><font color="green">Connected</font></b>')
 
     def thread_exception_handling(self, msg):
         """Display an error message with details about the exception and reset the "serial port value" to <Select port>.
