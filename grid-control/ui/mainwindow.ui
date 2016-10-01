@@ -2516,7 +2516,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>35</number>
@@ -2558,7 +2558,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>40</number>
@@ -2600,7 +2600,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>60</number>
@@ -2624,7 +2624,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>60</number>
@@ -2738,7 +2738,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>100</number>
@@ -2798,7 +2798,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>75</number>
@@ -2905,7 +2905,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>35</number>
@@ -2947,7 +2947,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>40</number>
@@ -2989,7 +2989,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>60</number>
@@ -3013,7 +3013,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>60</number>
@@ -3127,7 +3127,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>100</number>
@@ -3187,7 +3187,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>75</number>
@@ -3294,7 +3294,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>35</number>
@@ -3336,7 +3336,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>40</number>
@@ -3378,7 +3378,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>60</number>
@@ -3402,7 +3402,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>60</number>
@@ -3516,7 +3516,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>100</number>
@@ -3576,7 +3576,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>75</number>
@@ -3683,7 +3683,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>35</number>
@@ -3725,7 +3725,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>40</number>
@@ -3767,7 +3767,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>60</number>
@@ -3791,7 +3791,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>60</number>
@@ -3905,7 +3905,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>100</number>
@@ -3965,7 +3965,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>75</number>
@@ -4072,7 +4072,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>35</number>
@@ -4114,7 +4114,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>40</number>
@@ -4156,7 +4156,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>60</number>
@@ -4180,7 +4180,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>60</number>
@@ -4294,7 +4294,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>100</number>
@@ -4354,7 +4354,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>75</number>
@@ -4461,7 +4461,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>35</number>
@@ -4503,7 +4503,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>40</number>
@@ -4545,7 +4545,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>60</number>
@@ -4569,7 +4569,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>60</number>
@@ -4683,7 +4683,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>100</number>
@@ -4743,7 +4743,7 @@ QTreeWidget {
         <number>100</number>
        </property>
        <property name="singleStep">
-        <number>5</number>
+        <number>1</number>
        </property>
        <property name="value">
         <number>75</number>
