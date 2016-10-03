@@ -25,7 +25,7 @@ Release 1.0.3 adds experimental support for the Kraken X61 cooler. This requires
 ### LibUSB installation - IMPORTANT!
 1. To be able to communicate whith the Kraken X61 USB device, you need to download pre-compiled LibUSB DLL's from [here](https://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.20/libusb-1.0.20.7z/download)
 2. Unzip the archive
-3. Assuming you are using a **64 bit** version of windows:
+3. Assuming you are using a **64 bit** version of Windows:
  - Copy ...\libusb-1.0.20\MS32\dll\libusb-1.0.dll to C:\Windows\SysWOW64
  - Copy ...\libusb-1.0.20\MS64\dll\libusb-1.0.dll to C:\Windows\System32
  - Yes, the 64-bit DLL should be copied to "System32", and the 32-bit version to "SysWOW64" :-)
@@ -64,7 +64,8 @@ QT Creator (including QT Designer for UI design) can be downloaded [here](https:
 For troubleshooting, or if you would like to run Grid Control without a Grid device, please have a look at my grid simulator available [here](https://github.com/akej74/grid-simulator).
  
 ### Inspiration from other projects
-I would like to thank the authors of the following projects that have been helpful in understanding the communication protocol the Grid uses.
+I would like to thank the authors of the following projects that have been helpful in understanding the communication protocol the Grid and Kraken X61 uses.
 - [gridfan](https://github.com/CapitalF/gridfan) by CapitalF
 - [CamSucks](https://github.com/RoelGo/CamSucks) by RoelGo
+- [leviathan](https://github.com/jaksi/leviathan) by jaksi
 
