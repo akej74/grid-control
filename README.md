@@ -14,6 +14,22 @@ Grid Control is a free and open source alternative to the CAM application from N
 - Individual fan control (manual or automatic with control points)
 - Support the Grid+ V2 device
 
+### Disclaimer
+NZXT is not involved in this project, do not contact them if your device is damaged while using this software.
+
+Also, while it doesn't seem like the hardware could be damaged by silly USB messages (apart from overheating), I do **NOT** take any responsibility for any damage done to your cooler.
+
+### Experimental Kraken X61 support
+Release 1.0.3 adds experimental support for the Kraken X61 cooler. This requires the [LibUSB](http://libusb.info/) library to be installed, see next chapter.
+
+### LibUSB installation - IMPORTANT!
+1. To be able to communicate whith the Kraken X61 USB device, you need to download pre-compiled LibUSB DLL's from [here](https://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.20/libusb-1.0.20.7z/download)
+2. Unzip the archive
+3. Assuming you are using a **64 bit** version of windows:
+ - Copy ...\libusb-1.0.20\MS32\dll\libusb-1.0.dll to C:\Windows\SysWOW64
+ - Copy ...\libusb-1.0.20\MS64\dll\libusb-1.0.dll to C:\Windows\System32
+ - Yes, the 64-bit DLL should be copied to "System32", and the 32-bit version to "SysWOW64" :-)
+
 ### Stand-alone installation
 Grid Control is available as a stand-alone application (Python does not need to be installed):
 - Download the latest release from [Releases](https://github.com/akej74/grid-control/releases)
