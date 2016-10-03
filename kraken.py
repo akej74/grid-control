@@ -1,4 +1,5 @@
 import usb.core
+import helper
 
 class Cooler:
     COLOR_MODE_NORMAL = 1
@@ -31,11 +32,19 @@ class Cooler:
 
     def __init__(self, vid, pid, **kwargs):
         devices = list(usb.core.find(idVendor=vid, idProduct=pid, find_all=True))
-        assert devices, "No matching USB devices found"
+
+        # TODO: Better error handling...
+        if not devices:
+            helper.show_notification("No Kraken X61 found...")
+        #assert devices, "No matching USB devices found"
+
         if len(devices) > 1:
             print("Warning: more than one matching device found, using the first one")
-        self.device = devices[0]
-        #self.device.ctrl_transfer(0x40, 2, 0x0002)
+
+        # TODO: Better error handling...
+        if devices:
+            self.device = devices[0]
+            self.device.ctrl_transfer(0x40, 2, 0x0002)
 
         self.speed = kwargs.pop('speed', 30)
         self.color = kwargs.pop('color', (255, 0, 0))
