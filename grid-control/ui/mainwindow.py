@@ -1930,7 +1930,7 @@ class Ui_MainWindow(object):
         self.actionAbout.setObjectName("actionAbout")
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(4)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.comboBoxComPorts, self.comboBoxPolling)
         MainWindow.setTabOrder(self.comboBoxPolling, self.horizontalSliderFan1)
