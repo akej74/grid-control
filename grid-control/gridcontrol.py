@@ -7,15 +7,14 @@
 import sys
 import threading
 
-import serial
-from PyQt5 import QtCore, QtWidgets, QtGui
-
 import grid
 import helper
+import kraken
 import openhwmon
 import polling
+import serial
 import settings
-import kraken
+from PyQt5 import QtCore, QtWidgets, QtGui
 from ui.mainwindow import Ui_MainWindow
 
 # Define status icons (available in the resource file built with "pyrcc5"
@@ -706,7 +705,7 @@ if __name__ == "__main__":
     win = GridControl()
 
     # Set program version
-    win.setWindowTitle("Grid Control 1.0.3")
+    win.setWindowTitle("Grid Control 1.0.3.1")
 
     # Show window
     win.show()
