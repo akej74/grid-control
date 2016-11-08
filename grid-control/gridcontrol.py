@@ -65,8 +65,13 @@ class GridControl(QtWidgets.QMainWindow):
         self.config = QtCore.QSettings('GridControl', 'App')
 
         # TODO: Kraken experimental test...
-        self.x61 = kraken.Cooler(0x2433, 0xb200)
-        #self.x61 = kraken.Cooler(0x8087, 0x24)
+        if self.config.value("kraken_enabled", True, type=bool):
+            try:
+                self.x61 = kraken.Cooler(0x2433, 0xb200)
+                #self.x61 = kraken.Cooler(0x8087, 0x24)
+            except:
+                self.ui.checkBoxKrakenEnabled.setChecked(False)
+                self.config.setValue("kraken_enabled", False)
 
         # Get a list of available serial ports (e.g. "COM1" in Windows)
         self.serial_ports = grid.get_serial_ports()

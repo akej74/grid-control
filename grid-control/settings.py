@@ -151,6 +151,12 @@ def read_settings(config, ui, hwmon):
     ui.lineEditFan4.setText(config.value("fan4_name", "Fan 4", type=str))
     ui.lineEditFan5.setText(config.value("fan5_name", "Fan 5", type=str))
     ui.lineEditFan6.setText(config.value("fan6_name", "Fan 6", type=str))
+	
+	#
+	# "Kraken" tab
+	# ------------------------
+	
+    ui.checkBoxKrakenEnabled.setChecked(config.value("kraken_enabled", True, type=bool))
 
 def save_settings(config, ui):
     """Save current UI configuration to the OS repository, called when exiting the main application"""
@@ -277,3 +283,10 @@ def save_settings(config, ui):
     config.setValue("fan4_name", ui.lineEditFan4.text())
     config.setValue("fan5_name", ui.lineEditFan5.text())
     config.setValue("fan6_name", ui.lineEditFan6.text())
+	
+		
+	#
+	# "Kraken" tab
+	# ------------------------
+	
+    config.setValue("kraken_enabled", ui.checkBoxKrakenEnabled.isChecked())

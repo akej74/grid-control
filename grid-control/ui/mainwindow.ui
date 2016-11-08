@@ -82,7 +82,7 @@ QTreeWidget {
      <enum>QTabWidget::Triangular</enum>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>0</number>
     </property>
     <property name="iconSize">
      <size>
@@ -5167,6 +5167,19 @@ QTreeWidget {
        <string>Update!</string>
       </property>
      </widget>
+     <widget class="QCheckBox" name="checkBoxKrakenEnabled">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>70</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Enabled</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -5176,7 +5189,7 @@ QTreeWidget {
      <x>0</x>
      <y>0</y>
      <width>1033</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
