@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.7
+# Created by: PyQt5 UI code generator 5.5.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -1920,17 +1920,20 @@ class Ui_MainWindow(object):
         self.pushButtonKrakenUpdate = QtWidgets.QPushButton(self.tab)
         self.pushButtonKrakenUpdate.setGeometry(QtCore.QRect(20, 140, 93, 28))
         self.pushButtonKrakenUpdate.setObjectName("pushButtonKrakenUpdate")
+        self.checkBoxKrakenEnabled = QtWidgets.QCheckBox(self.tab)
+        self.checkBoxKrakenEnabled.setGeometry(QtCore.QRect(20, 60, 70, 17))
+        self.checkBoxKrakenEnabled.setObjectName("checkBoxKrakenEnabled")
         self.tabWidget.addTab(self.tab, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menuBar = QtWidgets.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1033, 26))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1033, 21))
         self.menuBar.setObjectName("menuBar")
         MainWindow.setMenuBar(self.menuBar)
         self.actionAbout = QtWidgets.QAction(MainWindow)
         self.actionAbout.setObjectName("actionAbout")
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(4)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
         MainWindow.setTabOrder(self.comboBoxComPorts, self.comboBoxPolling)
         MainWindow.setTabOrder(self.comboBoxPolling, self.horizontalSliderFan1)
@@ -2196,6 +2199,7 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "Kraken X61 Experimental"))
         self.label_3.setText(_translate("MainWindow", "Speed"))
         self.pushButtonKrakenUpdate.setText(_translate("MainWindow", "Update!"))
+        self.checkBoxKrakenEnabled.setText(_translate("MainWindow", "Enabled"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("MainWindow", "Kraken X61 EXPERIMENTAL"))
         self.actionAbout.setText(_translate("MainWindow", "About"))
 
