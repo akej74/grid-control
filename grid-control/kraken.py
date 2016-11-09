@@ -1,5 +1,11 @@
+"""
+    The below code comes from the "leviathan" project by jaksi
+    https://github.com/jaksi/leviathan
+"""
+
 import usb.core
 import helper
+
 
 class Cooler:
     COLOR_MODE_NORMAL = 1
