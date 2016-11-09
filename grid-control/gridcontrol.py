@@ -46,7 +46,7 @@ class GridControl(QtWidgets.QMainWindow):
         # Set upp the UI
         self.ui.setupUi(self)
 
-        # Lock object for locking the serial port while sending/receiving data
+        # Object for locking the serial port while sending/receiving data
         self.lock = threading.Lock()
 
         # Serial communication object
@@ -61,7 +61,7 @@ class GridControl(QtWidgets.QMainWindow):
         self.config = QtCore.QSettings('GridControl', 'App')
 
         # TODO: Kraken experimental test...
-        self.x61 = kraken.Cooler(0x2433, 0xb200)
+        #self.x61 = kraken.Cooler(0x2433, 0xb200)
         #self.x61 = kraken.Cooler(0x8087, 0x24)
 
         # Get a list of available serial ports (e.g. "COM1" in Windows)
@@ -176,8 +176,6 @@ class GridControl(QtWidgets.QMainWindow):
         self.ui.comboBoxPolling.currentIndexChanged.connect(self.init_communication)
 
         # Update fan voltage (speed) based on changes to the horizontal sliders
-        # "sliderReleased" is used to emit the value at slider release only,
-        # not continuously while dragging the slider, as this will generate to many events
         #
         # "grid.calculate_voltage" converts the percent value to valid voltages supported by the Grid
         # "lambda" is needed to send four arguments (serial object, fan id, fan voltage and lock object)
@@ -198,6 +196,15 @@ class GridControl(QtWidgets.QMainWindow):
 
         self.ui.horizontalSliderFan6.valueChanged.connect(
             lambda: grid.set_fan(ser=self.ser, fan=6, voltage=grid.calculate_voltage(self.ui.lcdNumberFan6.value()), lock=self.lock))
+
+        # Connect "Change value" events from "Fan config" tab (all "spin boxes") to verify that the values are valid
+        for fan in range(1, 7):
+            getattr(self.ui, "spinBoxMinSpeedFan" + str(fan)).valueChanged.connect(self.validate_fan_config)
+            getattr(self.ui, "spinBoxStartIncreaseSpeedFan" + str(fan)).valueChanged.connect(self.validate_fan_config)
+            getattr(self.ui, "spinBoxIntermediateSpeedFan" + str(fan)).valueChanged.connect(self.validate_fan_config)
+            getattr(self.ui, "spinBoxMaxSpeedFan" + str(fan)).valueChanged.connect(self.validate_fan_config)
+            getattr(self.ui, "spinBoxIntermediateTempFan" + str(fan)).valueChanged.connect(self.validate_fan_config)
+            getattr(self.ui, "spinBoxMaxTempFan" + str(fan)).valueChanged.connect(self.validate_fan_config)
 
         # Connect fan rpm signal (from polling thread) to fan rpm label
         self.thread.rpm_signal_fan1.connect(self.ui.labelRPMFan1.setText)
@@ -238,6 +245,52 @@ class GridControl(QtWidgets.QMainWindow):
         # This is needed as it's not possible to show a message box widget from the QThread directly
         self.thread.exception_signal.connect(self.thread_exception_handling)
 
+    def validate_fan_config(self):
+        """Validate fan configuration values, prevent incorrect/invalid values."""
+
+        # Name of widget (spin box) calling function
+        sender = self.sender().objectName()
+
+        # Fan id is the last character in the name
+        fan = sender[-1:]
+
+        # Get current values from spin boxes
+        min_speed_fan = getattr(self.ui, "spinBoxMinSpeedFan" + str(fan)).value()
+        start_increase_speed_fan = getattr(self.ui, "spinBoxStartIncreaseSpeedFan" + str(fan)).value()
+        intermediate_speed_fan = getattr(self.ui, "spinBoxIntermediateSpeedFan" + str(fan)).value()
+        max_speed_fan = getattr(self.ui, "spinBoxMaxSpeedFan" + str(fan)).value()
+        intermediate_temp_fan = getattr(self.ui, "spinBoxIntermediateTempFan" + str(fan)).value()
+        max_temp_fan = getattr(self.ui, "spinBoxMaxTempFan" + str(fan)).value()
+
+        # Logic for preventing incorrect/invalid values
+        if sender.startswith("spinBoxMinSpeedFan"):
+            if min_speed_fan >= intermediate_speed_fan:
+                getattr(self.ui, sender).setValue(intermediate_speed_fan - 1)
+
+        elif sender.startswith("spinBoxStartIncreaseSpeedFan"):
+           if start_increase_speed_fan >= intermediate_temp_fan:
+               getattr(self.ui, sender).setValue(intermediate_temp_fan - 1)
+
+        elif sender.startswith("spinBoxIntermediateSpeedFan"):
+            if intermediate_speed_fan >= max_speed_fan:
+                getattr(self.ui, sender).setValue(max_speed_fan - 1)
+            if intermediate_speed_fan <= min_speed_fan:
+                getattr(self.ui, sender).setValue(min_speed_fan + 1)
+
+        elif sender.startswith("spinBoxMaxSpeedFan"):
+           if max_speed_fan <= intermediate_speed_fan:
+               getattr(self.ui, sender).setValue(intermediate_speed_fan + 1)
+
+        elif sender.startswith("spinBoxIntermediateTempFan"):
+            if intermediate_temp_fan >= max_temp_fan:
+                getattr(self.ui, sender).setValue(max_temp_fan - 1)
+            if intermediate_temp_fan <= start_increase_speed_fan:
+                getattr(self.ui, sender).setValue(start_increase_speed_fan + 1)
+
+        elif sender.startswith("spinBoxMaxTempFan"):
+            if max_temp_fan <= intermediate_temp_fan:
+                getattr(self.ui, sender).setValue(intermediate_temp_fan + 1)
+
     def setup_ui_design(self):
         """Define UI parameters that cannot be configured in QT Creator directly."""
 
@@ -252,6 +305,7 @@ class GridControl(QtWidgets.QMainWindow):
         # treeWidget.setColumnHidden(1, True)
         self.ui.treeWidgetHWMonData.setSelectionMode(QtWidgets.QAbstractItemView.MultiSelection)
 
+
         # "Selected CPU sensors" tree widget configuration
         self.ui.treeWidgetSelectedCPUSensors.setHeaderLabels(["Node", "ID"])
         self.ui.treeWidgetSelectedCPUSensors.setColumnWidth(0, 150)
@@ -264,7 +318,7 @@ class GridControl(QtWidgets.QMainWindow):
         self.ui.treeWidgetSelectedGPUSensors.setColumnWidth(1, 50)
         self.ui.treeWidgetSelectedGPUSensors.setSelectionMode(QtWidgets.QAbstractItemView.MultiSelection)
 
-        # Simulate temperatures group box settings
+        # "Simulate temperatures" group box settings
         self.ui.checkBoxSimulateTemp.setChecked(False)
         self.ui.horizontalSliderCPUTemp.setEnabled(False)
         self.ui.horizontalSliderGPUTemp.setEnabled(False)
@@ -289,7 +343,6 @@ class GridControl(QtWidgets.QMainWindow):
 
         # If the polling thread is running, stop it to be able to update port/polling interval and reset fans
         if self.thread.isRunning():
-            # Stop running thread
             self.thread.stop()
 
         # Reset fan and temperature data (set rpm and voltage to "---" and temp to "0")
@@ -425,7 +478,7 @@ class GridControl(QtWidgets.QMainWindow):
         """Disables the horizontal sliders if "Automatic" mode is selected.
         When changing from automatic to manual mode, restore manual values."""
 
-        # If "Automatic" radio button was clicked
+        # If "Automatic" radio button was clicked (i.e. it's "Checked")
         if self.ui.radioButtonAutomatic.isChecked():
             # Save current manual values
             self.manual_value_fan1 = self.ui.horizontalSliderFan1.value()
@@ -445,7 +498,7 @@ class GridControl(QtWidgets.QMainWindow):
 
         # If "Manual" radio button was clicked
         else:
-            # Enable sliders
+            # Restore saved manual values
             self.ui.horizontalSliderFan1.setValue(self.manual_value_fan1)
             self.ui.horizontalSliderFan2.setValue(self.manual_value_fan2)
             self.ui.horizontalSliderFan3.setValue(self.manual_value_fan3)
@@ -453,7 +506,7 @@ class GridControl(QtWidgets.QMainWindow):
             self.ui.horizontalSliderFan5.setValue(self.manual_value_fan5)
             self.ui.horizontalSliderFan6.setValue(self.manual_value_fan6)
 
-            # Restore saved manual values
+            # Enable sliders
             self.ui.horizontalSliderFan1.setEnabled(True)
             self.ui.horizontalSliderFan2.setEnabled(True)
             self.ui.horizontalSliderFan3.setEnabled(True)
@@ -466,7 +519,7 @@ class GridControl(QtWidgets.QMainWindow):
 
         # If automatic mode is selected
         if self.ui.radioButtonAutomatic.isChecked():
-            # For each fan
+            # For each fan (1 ... 6)
             for fan in range(1, 7):
                 # Linear equation calculation
                 # y = k*x + m
@@ -490,7 +543,7 @@ class GridControl(QtWidgets.QMainWindow):
                 # Second equation (b)
                 # From "Intermediate fan speed at" to "Maximum fan speed at" (temperature on x-axis)
 
-                # Tempertures (x-axis)
+                # Temperatures (x-axis)
                 x1_b = int(getattr(self.ui, "spinBoxIntermediateTempFan" + str(fan)).value())
                 x2_b = int(getattr(self.ui, "spinBoxMaxTempFan" + str(fan)).value())
 
@@ -539,8 +592,9 @@ class GridControl(QtWidgets.QMainWindow):
     def simulate_temperatures(self):
         """Simulate CPU and GPU temperatures, used for verifying the functionality of the fan control system."""
 
-        # If simulation is enabled
+        # If "Simulate temperatures" checkbox is enabled
         if self.ui.checkBoxSimulateTemp.isChecked():
+            # Enable sliders
             self.ui.horizontalSliderCPUTemp.setEnabled(True)
             self.ui.horizontalSliderGPUTemp.setEnabled(True)
 
@@ -560,7 +614,7 @@ class GridControl(QtWidgets.QMainWindow):
             self.ui.groupBoxCurrentCPUTemp.setTitle("Sim. CPU temp")
             self.ui.groupBoxCurrentGPUTemp.setTitle("Sim. GPU temp")
 
-        # Simulation disabled, reset settings
+        # If "Simulate temperatures" checkbox is disabled, reset settings
         else:
             # Disable horizontal sliders
             self.ui.horizontalSliderCPUTemp.setEnabled(False)
@@ -705,7 +759,7 @@ if __name__ == "__main__":
     win = GridControl()
 
     # Set program version
-    win.setWindowTitle("Grid Control 1.0.3.1")
+    win.setWindowTitle("Grid Control 1.0.4")
 
     # Show window
     win.show()
