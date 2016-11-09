@@ -46,6 +46,10 @@ class GridControl(QtWidgets.QMainWindow):
         # Set upp the UI
         self.ui.setupUi(self)
 
+        # System tray icon
+        self.trayIcon = SystemTrayIcon(QtGui.QIcon(QtGui.QPixmap(":/icons/grid.png")), self)
+        self.trayIcon.show()
+
         # Object for locking the serial port while sending/receiving data
         self.lock = threading.Lock()
 
@@ -744,8 +748,53 @@ class GridControl(QtWidgets.QMainWindow):
         settings.save_settings(self.config, self.ui)
         print("Settings saved")
 
+        # Hide tray icon
+        self.trayIcon.hide()
+
         # Accept the closing event and close application
         event.accept()
+
+    def changeEvent(self, event):
+        if event.type() == QtCore.QEvent.WindowStateChange:
+            if self.windowState() & QtCore.Qt.WindowMinimized:
+                event.ignore()
+                self.minimize_to_tray()
+
+    def toggle_visibility(self):
+        if self.isVisible():
+            self.minimize_to_tray()
+        else:
+            self.restore_from_tray()
+
+    def minimize_to_tray(self):
+        self.hide()
+        # self.trayIcon.show()
+
+    def restore_from_tray(self):
+        self.setWindowState(self.windowState() & ~QtCore.Qt.WindowMinimized | QtCore.Qt.WindowActive)
+        self.activateWindow()
+        self.show()
+        # self.trayIcon.hide()
+
+
+class SystemTrayIcon(QtWidgets.QSystemTrayIcon):
+
+    def __init__(self, icon, parent=None):
+        super(SystemTrayIcon, self).__init__(icon, parent)
+        self.parent = parent
+        self.setToolTip("Grid Control")
+        self.activated.connect(self.on_systemTrayIcon_activated)
+        menu = QtWidgets.QMenu()
+        showAction = menu.addAction("Hide/Show")
+        showAction.triggered.connect(parent.toggle_visibility)
+        menu.addSeparator()
+        exitAction = menu.addAction("Exit")
+        exitAction.triggered.connect(parent.close)
+        self.setContextMenu(menu)
+
+    def on_systemTrayIcon_activated(self, reason):
+        if reason == QtWidgets.QSystemTrayIcon.DoubleClick:
+            self.parent.toggle_visibility()
 
 
 if __name__ == "__main__":
