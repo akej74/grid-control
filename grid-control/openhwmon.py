@@ -14,11 +14,10 @@ import helper
 
 
 def initialize_hwmon():
-    """Create the WMI object and verify that OpenHardwareMonitor is installed."""
+    """Create a WMI object and verify that OpenHardwareMonitor is installed."""
 
     # Access the OpenHWMon WMI interface
     try:
-
         hwmon = wmi.WMI(namespace="root\OpenHardwareMonitor")
         return hwmon
 
@@ -27,7 +26,7 @@ def initialize_hwmon():
         helper.show_error("OpenHardwareMonitor WMI data not found.\n\n"
                           "Please make sure that OpenHardwareMonitor is installed.\n\n"
                           "Latest version is available at:\n\n"
-                          "http://openhardwaremonitor.org/files/openhardwaremonitor-v0.7.1.5-alpha.zip\n\n"
+                          "http://openhardwaremonitor.org\n\n"
                           "The application will now exit.")
         sys.exit(0)
 
