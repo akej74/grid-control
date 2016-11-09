@@ -191,6 +191,7 @@ class PollingThread(QtCore.QThread):
                 - Fan voltages
                 - CPU temperature
                 - GPU temperature
+                - Update fans
         """
 
         try:
@@ -211,7 +212,7 @@ class PollingThread(QtCore.QThread):
                 # Get current temperature sensors from OpenHardwareMonitor
                 temperature_sensors = openhwmon.get_temperature_sensors(hwmon_thread_wmi)
 
-                # Emit signals with current CPU and GPU temperatures
+                # Calculate CPU and GPU temperatures
                 current_cpu_temp = self.calculate_temp(temperature_sensors, "cpu")
                 current_gpu_temp = self.calculate_temp(temperature_sensors, "gpu")
 
@@ -292,7 +293,7 @@ class PollingThread(QtCore.QThread):
                 # Emit update signal
                 self.update_signal.emit()
 
-                print("End of polling loop, sleeping for " + str(self.polling_interval) + " ms")
+                #print("End of polling loop, sleeping for " + str(self.polling_interval) + " ms")
 
                 # Sleep for the set polling interval (ms)
                 time.sleep(self.polling_interval/1000)
