@@ -17,7 +17,7 @@ Grid Control is a free and open source alternative to the CAM application from N
 ### Disclaimer
 NZXT is not involved in this project, do not contact them if your device is damaged while using this software.
 
-Also, while it doesn't seem like the hardware could be damaged by silly USB messages (apart from overheating), I do **NOT** take any responsibility for any damage done to your cooler.
+Also, while it doesn't seem like the hardware could be damaged by silly USB messages (apart from overheating), I do **NOT** take any responsibility for any damage done to your cooler (applies to the Kraken watercooler, currently disabled).
 
 ### Experimental Kraken X61 support - (not applicable as Kraken support is disabled for now)
 Release 1.0.3 adds experimental support for the Kraken X61 cooler. This requires the [LibUSB](http://libusb.info/) library to be installed, see next chapter.
