@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.7
+# Created by: PyQt5 UI code generator 5.9
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -704,6 +704,11 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.labelHWMonStatus.setFont(font)
         self.labelHWMonStatus.setObjectName("labelHWMonStatus")
+        self.checkBoxTerminateOhmOnClose = QtWidgets.QCheckBox(self.groupBoxHWMon)
+        self.checkBoxTerminateOhmOnClose.setGeometry(QtCore.QRect(20, 60, 211, 17))
+        self.checkBoxTerminateOhmOnClose.setMouseTracking(True)
+        self.checkBoxTerminateOhmOnClose.setFocusPolicy(QtCore.Qt.StrongFocus)
+        self.checkBoxTerminateOhmOnClose.setObjectName("checkBoxTerminateOhmOnClose")
         self.groupBoxGridSetup = QtWidgets.QGroupBox(self.frame)
         self.groupBoxGridSetup.setGeometry(QtCore.QRect(10, 10, 291, 181))
         font = QtGui.QFont()
@@ -1924,7 +1929,7 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.tabKraken, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menuBar = QtWidgets.QMenuBar(MainWindow)
-        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1033, 26))
+        self.menuBar.setGeometry(QtCore.QRect(0, 0, 1033, 21))
         self.menuBar.setObjectName("menuBar")
         MainWindow.setMenuBar(self.menuBar)
         self.actionAbout = QtWidgets.QAction(MainWindow)
@@ -2067,6 +2072,7 @@ class Ui_MainWindow(object):
         self.groupBoxHWMon.setTitle(_translate("MainWindow", "Open Hardware Monitor"))
         self.label_151.setText(_translate("MainWindow", "Status"))
         self.labelHWMonStatus.setText(_translate("MainWindow", "Status"))
+        self.checkBoxTerminateOhmOnClose.setText(_translate("MainWindow", "Terminate OHM on Close"))
         self.groupBoxGridSetup.setTitle(_translate("MainWindow", "Grid V2"))
         self.label_2.setText(_translate("MainWindow", "Serial port"))
         self.comboBoxComPorts.setCurrentText(_translate("MainWindow", "<Select port>"))

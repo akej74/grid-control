@@ -751,6 +751,10 @@ class GridControl(QtWidgets.QMainWindow):
         # Hide tray icon
         self.trayIcon.hide()
 
+        # Close HWMon upon termination if specified in the preferences
+        if self.ui.checkBoxTerminateOhmOnClose.isChecked():
+            openhwmon.closeohm()
+
         # Accept the closing event and close application
         event.accept()
 

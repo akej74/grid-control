@@ -1758,6 +1758,25 @@ QTreeWidget {
          <string>Status</string>
         </property>
        </widget>
+       <widget class="QCheckBox" name="checkBoxTerminateOhmOnClose">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>60</y>
+          <width>211</width>
+          <height>17</height>
+         </rect>
+        </property>
+        <property name="mouseTracking">
+         <bool>true</bool>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::StrongFocus</enum>
+        </property>
+        <property name="text">
+         <string>Terminate OHM on Close</string>
+        </property>
+       </widget>
       </widget>
       <widget class="QGroupBox" name="groupBoxGridSetup">
        <property name="geometry">
@@ -5179,7 +5198,7 @@ QTreeWidget {
      <x>0</x>
      <y>0</y>
      <width>1033</width>
-     <height>26</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

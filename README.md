@@ -36,9 +36,13 @@ Grid Control is available as a stand-alone application (Python does not need to 
 - Unzip file
 - Run "gridcontrol.exe"
 
-### OpenHardwareMonitor
-Grid Control uses [OpenHardwareMonitor](https://github.com/openhardwaremonitor/openhardwaremonitor) to get temperature information from the available sensors in the system.
-- Download latest release of OpenHardwareMonitor [here](http://openhardwaremonitor.org/files/openhardwaremonitor-v0.7.1.5-alpha.zip)
+### OpenHardwareMonitor (REQUIRED IN THIS FORK)
+Grid Control uses [OpenHardwareMonitor](https://github.com/openhardwaremonitor/openhardwaremonitor) to get temperature information from the available sensors in the system. Grid-Control AUTOMATICALLY launches a new OHM process if none exist. The OHM process is optionally terminated according to user preference.
+
+- Download latest release of OpenHardwareMonitor [here](http://openhardwaremonitor.org/files/openhardwaremonitor-v0.8.0-beta.zip)
+- You must place the binaries directly into the ./grid-control/ohm/ directory. The OHM executable must be named "OpenHardwareMonitor.exe"
+
+NOTE: Build 0.7.1 and 0.8 did not work on my machine. I built a more updated fork of OHM called LibreHardwareMonitor [here](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor)
 
 ### Driver for the Grid device
 The Grid uses a MCP2200 USB-to-UART serial converter from [Microchip](http://www.microchip.com/wwwproducts/en/en546923).
@@ -51,17 +55,31 @@ Driver installation:
  - A driver is needed, see "MCP2200/MCP2221 Windows Driver & Installer" on the [product page](http://www.microchip.com/wwwproducts/en/en546923)
  
 ### Python environment
-Assuming you have Python 3 installed, the following additional modules are required (can be installed with "pip").
+Assuming you have Python 3.5 installed, the following additional modules are required (can be installed with "pip").
 - pip install pyserial
 - pip install wmi
 - pip install pypiwin32
 - pip install pyqt5
+- pip install install pyinstaller (For python 3.6+, you will need the unstable dev version of pyinstaller)
+- pip install pyusb
 
 ### QT Creator
 QT Creator (including QT Designer for UI design) can be downloaded [here](https://www.qt.io/download-open-source/).
+You need to convert the mainwindow.ui to mainwindow.py (because of PyQt5). This is taken care of my executing pyinstaller-build.bat
+
+NOTE: It is used strictly for editing the ui/mainwindow.ui file directly. It is not necessary to create a QT Project.
+
+### Packaging
+PyInstaller is used to package the software into EXE format so that you dont have to call "python gridcontrol.py"
+
+Run pyinstaller-build.bat to package the software.
+
+### PyCharm (OPTIONAL)
+The latest version of PyCharm Community edition was used because it is a fantastic IDE.
+I used the ./grid-control/ directory as the root for the project.
 
 ### Grid simulator
-For troubleshooting, or if you would like to run Grid Control without a Grid device, please have a look at my grid simulator available [here](https://github.com/akej74/grid-simulator).
+For troubleshooting, or if you would like to run Grid Control without a Grid device, please have a look at the original grid simulator available [here](https://github.com/akej74/grid-simulator).
  
 ### Inspiration from other projects
 I would like to thank the authors of the following projects that have been helpful in understanding the communication protocol the Grid and Kraken X61 uses.

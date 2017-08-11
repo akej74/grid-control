@@ -6,22 +6,46 @@
 """
 
 import sys
-
+import time
 import wmi
+import subprocess
 from PyQt5 import QtCore, QtWidgets, QtGui
 
 import helper
+
+def closeohm():
+    """Find and close all instances of OpenHardwareMonitor"""
+    sysWmi = wmi.WMI()
+    processList = sysWmi.Win32_Process(name="OpenHardwareMonitor.exe")
+
+    for p in processList:
+        p.Terminate()
 
 
 def initialize_hwmon():
     """Create a WMI object and verify that OpenHardwareMonitor is installed."""
 
-    # Access the OpenHWMon WMI interface
-    try:
-        hwmon = wmi.WMI(namespace="root\OpenHardwareMonitor")
-        return hwmon
+    # Check for running OpenHardwareMonitor.exe process
+    sysWmi = wmi.WMI()
+    processList = sysWmi.Win32_Process(name="OpenHardwareMonitor.exe")
 
-    # WMI exception (e.g. no namespace "root\OpenHardwareMonitor" indicates OpenHWMon is not installed
+    # Launch OpenHardwareMonitor
+    if len(processList) <= 0:
+        subprocess.Popen("ohm\OpenHardwareMonitor.exe",)
+
+    # Try and Access the OpenHWMon WMI interface repeatedly or give up after 10 seconds
+    try:
+        t_end = time.time() + 10
+        while time.time() < t_end:
+            sysWmi = wmi.WMI(moniker="winmgmts:{impersonationLevel=impersonate}//./root")
+
+            for subspace in sysWmi.__NAMESPACE():
+                if subspace.Name == "OpenHardwareMonitor":
+                    hwmon = wmi.WMI(namespace="root\OpenHardwareMonitor")
+                    return hwmon
+                else:
+                    time.sleep(1)
+
     except:
         helper.show_error("OpenHardwareMonitor WMI data not found.\n\n"
                           "Please make sure that OpenHardwareMonitor is installed.\n\n"
@@ -29,6 +53,15 @@ def initialize_hwmon():
                           "http://openhardwaremonitor.org\n\n"
                           "The application will now exit.")
         sys.exit(0)
+
+
+    # WMI exception (e.g. no namespace "root\OpenHardwareMonitor" indicates OpenHWMon is not running
+    helper.show_error("OpenHardwareMonitor WMI data not found.\n\n"
+                      "Please make sure that OpenHardwareMonitor is installed and running.\n\n"
+                      "Latest version is available at:\n\n"
+                      "http://openhardwaremonitor.org\n\n"
+                      "The application will now exit.")
+    sys.exit(0)
 
 
 def populate_tree(hwmon, treeWidget):
