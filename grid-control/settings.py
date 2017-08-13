@@ -20,6 +20,9 @@ def read_settings(config, ui, hwmon):
     # "General" tab
     # ------------------------
 
+    # Open Hardware Monitor terminate on closing
+    ui.checkBoxTerminateOhmOnClose.setChecked(config.value("close_ohm", True, type=bool))
+
     # Horizontal slider values (fan percent), default value "35"
     ui.horizontalSliderFan1.setValue(config.value("fan1_percent", 35, type=int))
     ui.horizontalSliderFan2.setValue(config.value("fan2_percent", 35, type=int))
@@ -158,6 +161,10 @@ def save_settings(config, ui):
     #
     # "General" tab
     # ------------------------
+
+    # Open Hardware Monitor terminate on closing
+    config.setValue("close_ohm", ui.checkBoxTerminateOhmOnClose.isChecked())
+
     # Fan slider values
     config.setValue("fan1_percent", ui.horizontalSliderFan1.value())
     config.setValue("fan2_percent", ui.horizontalSliderFan2.value())
