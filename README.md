@@ -34,15 +34,15 @@ Grid Control uses [OpenHardwareMonitor](https://github.com/openhardwaremonitor/o
 
 As an alternative, there is also a more updated fork of OHM called LibreHardwareMonitor [here](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor)
 
-### Driver for the Grid device
+### Driver for the Grid device (not needed for Windows 10)
 The Grid uses a MCP2200 USB-to-UART serial converter from [Microchip](http://www.microchip.com/wwwproducts/en/en546923).
 
 Driver installation:
 - Windows 10
- - No driver is needed, Windows 10 will detect the Grid device automatically and add a "USB Serial Device" in Device Manager
+  - No driver is needed, Windows 10 will detect the Grid device automatically and add a "USB Serial Device" in Device Manager
  
 - Windows 7
- - A driver is needed, see "MCP2200/MCP2221 Windows Driver & Installer" on the [product page](http://www.microchip.com/wwwproducts/en/en546923)
+  - A driver is needed, see "MCP2200/MCP2221 Windows Driver & Installer" on the [product page](http://www.microchip.com/wwwproducts/en/en546923)
  
 ### Python environment
 Assuming you have latest version of Python 3 installed, the following additional modules are required (can be installed with "pip").
