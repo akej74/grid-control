@@ -62,7 +62,7 @@ I recommend the free version of PyCharm IDE for Python development.
   - QT Designer will be installed in `C:\Qt\5.x\mingw53_32\bin\designer.exe`
   - Note that the executable is named "designer.exe"
 - To convert the `mainwindow.ui` to `mainwindow.py`run the following command:
-  - `<python installation directory>\Scripts\pyuic.exe mainwindow.ui -o mainwindow.py`
+  - `<python installation directory>\Scripts\pyuic5.exe mainwindow.ui -o mainwindow.py`
 
 ### Packaging
 PyInstaller is used to package the software into EXE format so that you dont have to call "python gridcontrol.py"
