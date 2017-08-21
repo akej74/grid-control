@@ -45,7 +45,7 @@ Driver installation:
   - A driver is needed, see "MCP2200/MCP2221 Windows Driver & Installer" on the [product page](http://www.microchip.com/wwwproducts/en/en546923)
  
 ### Python environment
-Assuming you have latest version of Python 3 installed, the following additional modules are required (can be installed with "pip").
+Assuming you have latest version of Python 3 installed, the following additional modules are required, install with pip:
 - pip install pyserial
 - pip install wmi
 - pip install pypiwin32
