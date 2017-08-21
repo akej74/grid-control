@@ -20,7 +20,7 @@ NZXT is not involved in this project, please do not contact them regarding this 
 ### Note about supporting other hardware devices besides the Grid V2
 Grid Control only supports the Grid V2 device, no other hardware from NZXT like the different Kraken watercoolers or HUE lightning devices. There are other applications available on GitHub for these devices, please check the NZXT Reddit community for details.
 
-### Stand-alone installation (build with PyInstaller)
+### Stand-alone installation (built with PyInstaller)
 Grid Control is available as a stand-alone application (Python does not need to be installed):
 - Download the latest release from [Releases](https://github.com/akej74/grid-control/releases)
 - Unzip file
