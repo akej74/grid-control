@@ -23,7 +23,7 @@ Also, while it doesn't seem like the hardware could be damaged by silly USB mess
 Release 1.0.3 adds experimental support for the Kraken X61 cooler. This requires the [LibUSB](http://libusb.info/) library to be installed, see next chapter.
 
 ### LibUSB installation - (not applicable as Kraken support is disabled for now)
-1. To be able to communicate whith the Kraken X61 USB device, you need to download pre-compiled LibUSB DLL's from [here](https://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.20/libusb-1.0.20.7z/download)
+1. To be able to communicate with the Kraken X61 USB device, you need to download pre-compiled LibUSB DLL's from [here](https://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.20/libusb-1.0.20.7z/download)
 2. Unzip the archive
 3. Assuming you are using a **64 bit** version of Windows:
  - Copy ...\libusb-1.0.20\MS32\dll\libusb-1.0.dll to C:\Windows\SysWOW64
