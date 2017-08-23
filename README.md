@@ -9,62 +9,70 @@ Grid Control is a free and open source alternative to the CAM application from N
 
 ### Highlights
 - Simple to use and resource efficient
-- Written in Python 3 using QT5 for the user interface
 - Uses OpenHardwareMonitor to read sensor values
 - Individual fan control (manual or automatic with control points)
 - Support the Grid+ V2 device
+- Developed in Python 3 using QT5 for the user interface
 
 ### Disclaimer
-NZXT is not involved in this project, do not contact them if your device is damaged while using this software.
+NZXT is not involved in this project, please do not contact them regarding this application. If you have a question, please open an Issue or send me a message on Reddit. Also, while it seems very unlikely that your hardware could be damaged by this application, I do **NOT** take any responsibility for any damage done to your HW using this software (e.g. overheat due to low fan settings).
 
-Also, while it doesn't seem like the hardware could be damaged by silly USB messages (apart from overheating), I do **NOT** take any responsibility for any damage done to your cooler (applies to the Kraken watercooler, currently disabled).
+### Note about supporting other hardware devices besides the Grid V2
+Grid Control only supports the Grid V2 device, no other hardware from NZXT like the different Kraken watercoolers or HUE lightning devices. There are other applications available on GitHub for these devices, please check the NZXT Reddit community for details.
 
-### Experimental Kraken X61 support - (not applicable as Kraken support is disabled for now)
-Release 1.0.3 adds experimental support for the Kraken X61 cooler. This requires the [LibUSB](http://libusb.info/) library to be installed, see next chapter.
-
-### LibUSB installation - (not applicable as Kraken support is disabled for now)
-1. To be able to communicate whith the Kraken X61 USB device, you need to download pre-compiled LibUSB DLL's from [here](https://sourceforge.net/projects/libusb/files/libusb-1.0/libusb-1.0.20/libusb-1.0.20.7z/download)
-2. Unzip the archive
-3. Assuming you are using a **64 bit** version of Windows:
- - Copy ...\libusb-1.0.20\MS32\dll\libusb-1.0.dll to C:\Windows\SysWOW64
- - Copy ...\libusb-1.0.20\MS64\dll\libusb-1.0.dll to C:\Windows\System32
- - Yes, the 64-bit DLL should be copied to "System32", and the 32-bit version to "SysWOW64" :-)
-
-### Stand-alone installation
+### Stand-alone installation (built with PyInstaller)
 Grid Control is available as a stand-alone application (Python does not need to be installed):
 - Download the latest release from [Releases](https://github.com/akej74/grid-control/releases)
 - Unzip file
 - Run "gridcontrol.exe"
 
 ### OpenHardwareMonitor
-Grid Control uses [OpenHardwareMonitor](https://github.com/openhardwaremonitor/openhardwaremonitor) to get temperature information from the available sensors in the system.
-- Download latest release of OpenHardwareMonitor [here](http://openhardwaremonitor.org/files/openhardwaremonitor-v0.7.1.5-alpha.zip)
+Grid Control uses [OpenHardwareMonitor](https://github.com/openhardwaremonitor/openhardwaremonitor) to get temperature information from the available sensors in the system. 
+- Download latest release of OpenHardwareMonitor [here](http://openhardwaremonitor.org/files/openhardwaremonitor-v0.8.0-beta.zip)
 
-### Driver for the Grid device
+### Driver for the Grid device (not needed for Windows 10)
 The Grid uses a MCP2200 USB-to-UART serial converter from [Microchip](http://www.microchip.com/wwwproducts/en/en546923).
 
 Driver installation:
 - Windows 10
- - No driver is needed, Windows 10 will detect the Grid device automatically and add a "USB Serial Device" in Device Manager
+  - No driver is needed, Windows 10 will detect the Grid device automatically and add a "USB Serial Device" in Device Manager
  
 - Windows 7
- - A driver is needed, see "MCP2200/MCP2221 Windows Driver & Installer" on the [product page](http://www.microchip.com/wwwproducts/en/en546923)
+  - A driver is needed, see "MCP2200/MCP2221 Windows Driver & Installer" on the [product page](http://www.microchip.com/wwwproducts/en/en546923)
  
 ### Python environment
-Assuming you have Python 3 installed, the following additional modules are required (can be installed with "pip").
+Assuming you have latest version of Python 3 installed, the following additional modules are required, install with pip:
 - pip install pyserial
 - pip install wmi
 - pip install pypiwin32
 - pip install pyqt5
 
-### QT Creator
-QT Creator (including QT Designer for UI design) can be downloaded [here](https://www.qt.io/download-open-source/).
+### PyInstaller
+For packaging, use pyinstaller:
+- pip install pyinstaller (For python 3.6+, you will need the latest dev version of pyinstaller)
+
+### Python IDE
+I recommend the free version of PyCharm IDE for Python development.
+
+### Note about "QT Designer"
+- For editing the User Interface (`mainwindow.ui`), install QT Designer as follows:
+  - Install latest QT5 open source suite from [QT main site](https://www.qt.io/)
+  - In the install wizard, make sure you include the "Qt 5.3 MinGW" component
+  - QT Designer will be installed in `C:\Qt\5.x\mingw53_32\bin\designer.exe`
+  - Note that the executable is named "designer.exe"
+- To convert the `mainwindow.ui` to `mainwindow.py`run the following command:
+  - `<python installation directory>\Scripts\pyuic5.exe mainwindow.ui -o mainwindow.py`
+
+### Packaging
+PyInstaller is used to package the software into EXE format so that you dont have to call "python gridcontrol.py"
+
+Run pyinstaller-build.bat to package the software.
 
 ### Grid simulator
-For troubleshooting, or if you would like to run Grid Control without a Grid device, please have a look at my grid simulator available [here](https://github.com/akej74/grid-simulator).
+For troubleshooting, or if you would like to run Grid Control without a Grid device, please have a look at my "Grid Simulator" available [here](https://github.com/akej74/grid-simulator).
  
 ### Inspiration from other projects
-I would like to thank the authors of the following projects that have been helpful in understanding the communication protocol the Grid and Kraken X61 uses.
+I would like to thank the authors of the following projects that have been helpful in understanding the communication protocol the Grid uses.
 - [gridfan](https://github.com/CapitalF/gridfan) by CapitalF
 - [CamSucks](https://github.com/RoelGo/CamSucks) by RoelGo
 - [leviathan](https://github.com/jaksi/leviathan) by jaksi
