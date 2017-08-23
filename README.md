@@ -40,16 +40,18 @@ Driver installation:
 - Windows 7
   - A driver is needed, see "MCP2200/MCP2221 Windows Driver & Installer" on the [product page](http://www.microchip.com/wwwproducts/en/en546923)
  
-### Python environment
+### Python environment and running the application
 Assuming you have latest version of Python 3 installed, the following additional modules are required, install with pip:
-- pip install pyserial
-- pip install wmi
-- pip install pypiwin32
-- pip install pyqt5
+- `pip install pyserial`
+- `pip install wmi`
+- `pip install pypiwin32`
+- `pip install pyqt5`
+
+Run `gridcontrol.py` to start the Grid Control application.
 
 ### PyInstaller
 For packaging, use pyinstaller:
-- pip install pyinstaller (For python 3.6+, you will need the latest dev version of pyinstaller)
+- `pip install pyinstaller` (For python 3.6+, you will need the latest dev version of pyinstaller)
 
 ### Python IDE
 I recommend the free version of PyCharm IDE for Python development.
