@@ -48,11 +48,12 @@ Assuming you have latest version of Python 3 installed, the following additional
 - `pip install pypiwin32`
 - `pip install pyqt5`
 
-Run `gridcontrol.py` to start the Grid Control application.
+Run `python gridcontrol.py` to start the Grid Control application.
 
 ### PyInstaller
-For packaging, use pyinstaller:
+For packaging, use PyInstaller:
 - `pip install pyinstaller` (For python 3.6+, you will need the [latest dev version of pyinstaller](https://pythonhosted.org/PyInstaller/when-things-go-wrong.html#getting-the-latest-version)
+- PyInstaller is used to package the software into EXE format so that you can run the application without having Python installed
 
 ### Python IDE
 I recommend the free version of PyCharm IDE for Python development.
@@ -65,11 +66,6 @@ I recommend the free version of PyCharm IDE for Python development.
   - Note that the executable is named "designer.exe"
 - To convert the `mainwindow.ui` to `mainwindow.py`run the following command:
   - `<python installation directory>\Scripts\pyuic5.exe mainwindow.ui -o mainwindow.py`
-
-### Packaging
-PyInstaller is used to package the software into EXE format so that you dont have to call "python gridcontrol.py"
-
-Run pyinstaller-build.bat to package the software.
 
 ### Grid simulator
 For troubleshooting, or if you would like to run Grid Control without a Grid device, please have a look at my "Grid Simulator" available [here](https://github.com/akej74/grid-simulator).
