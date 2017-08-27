@@ -370,8 +370,9 @@ class GridControl(QtWidgets.QMainWindow):
             self.ui.radioButtonManual.setEnabled(True)
             self.ui.radioButtonAutomatic.setEnabled(True)
             self.ui.checkBoxSimulateTemp.setEnabled(True)
-            self.ui.horizontalSliderCPUTemp.setEnabled(True)
-            self.ui.horizontalSliderGPUTemp.setEnabled(True)
+            if self.ui.checkBoxSimulateTemp.isChecked():
+                self.ui.horizontalSliderCPUTemp.setEnabled(True)
+                self.ui.horizontalSliderGPUTemp.setEnabled(True)
 
             # Initialize the Grid+ V2 device
             if grid.initialize_grid(self.ser, self.lock):
