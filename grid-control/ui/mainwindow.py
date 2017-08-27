@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.7
+# Created by: PyQt5 UI code generator 5.9
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -1891,37 +1891,6 @@ class Ui_MainWindow(object):
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
         self.tabWidget.addTab(self.tabRenameFans, "")
-        self.tabKraken = QtWidgets.QWidget()
-        self.tabKraken.setEnabled(False)
-        self.tabKraken.setObjectName("tabKraken")
-        self.label = QtWidgets.QLabel(self.tabKraken)
-        self.label.setGeometry(QtCore.QRect(20, 20, 291, 41))
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        self.label.setFont(font)
-        self.label.setObjectName("label")
-        self.label_3 = QtWidgets.QLabel(self.tabKraken)
-        self.label_3.setGeometry(QtCore.QRect(20, 90, 55, 31))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.label_3.setFont(font)
-        self.label_3.setObjectName("label_3")
-        self.spinBoxKrakenSpeed = QtWidgets.QSpinBox(self.tabKraken)
-        self.spinBoxKrakenSpeed.setGeometry(QtCore.QRect(90, 90, 51, 31))
-        font = QtGui.QFont()
-        font.setPointSize(10)
-        self.spinBoxKrakenSpeed.setFont(font)
-        self.spinBoxKrakenSpeed.setMinimum(30)
-        self.spinBoxKrakenSpeed.setMaximum(100)
-        self.spinBoxKrakenSpeed.setSingleStep(5)
-        self.spinBoxKrakenSpeed.setObjectName("spinBoxKrakenSpeed")
-        self.plainTextEditKraken = QtWidgets.QPlainTextEdit(self.tabKraken)
-        self.plainTextEditKraken.setGeometry(QtCore.QRect(20, 210, 661, 371))
-        self.plainTextEditKraken.setObjectName("plainTextEditKraken")
-        self.pushButtonKrakenUpdate = QtWidgets.QPushButton(self.tabKraken)
-        self.pushButtonKrakenUpdate.setGeometry(QtCore.QRect(20, 140, 93, 28))
-        self.pushButtonKrakenUpdate.setObjectName("pushButtonKrakenUpdate")
-        self.tabWidget.addTab(self.tabKraken, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menuBar = QtWidgets.QMenuBar(MainWindow)
         self.menuBar.setGeometry(QtCore.QRect(0, 0, 1033, 26))
@@ -2194,10 +2163,6 @@ class Ui_MainWindow(object):
         self.lineEditFan3.setText(_translate("MainWindow", "Fan 3"))
         self.label_4.setText(_translate("MainWindow", "Restart application to apply changes"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabRenameFans), _translate("MainWindow", "Rename Fans"))
-        self.label.setText(_translate("MainWindow", "Kraken X61 Experimental"))
-        self.label_3.setText(_translate("MainWindow", "Speed"))
-        self.pushButtonKrakenUpdate.setText(_translate("MainWindow", "Update!"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabKraken), _translate("MainWindow", "Kraken X61 EXPERIMENTAL"))
         self.actionAbout.setText(_translate("MainWindow", "About"))
 
 from . import resources_rc
