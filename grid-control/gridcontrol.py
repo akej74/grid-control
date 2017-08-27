@@ -9,7 +9,6 @@ import threading
 
 import grid
 import helper
-import kraken
 import openhwmon
 import polling
 import serial
@@ -63,10 +62,6 @@ class GridControl(QtWidgets.QMainWindow):
         # QSettings object for storing the UI configuration in the OS native repository (Registry for Windows, ini-file for Linux)
         # In Windows, parameters will be stored at HKEY_CURRENT_USER/SOFTWARE/GridControl/App
         self.config = QtCore.QSettings('GridControl', 'App')
-
-        # TODO: Kraken experimental test...
-        #self.x61 = kraken.Cooler(0x2433, 0xb200)
-        #self.x61 = kraken.Cooler(0x8087, 0x24)
 
         # Get a list of available serial ports (e.g. "COM1" in Windows)
         self.serial_ports = grid.get_serial_ports()
@@ -154,9 +149,6 @@ class GridControl(QtWidgets.QMainWindow):
 
         # Connect "Simulated temperatures" checkbox
         self.ui.checkBoxSimulateTemp.stateChanged.connect(self.simulate_temperatures)
-
-        # TODO: Kraken update button...
-        self.ui.pushButtonKrakenUpdate.clicked.connect(self.update_kraken)
 
         # Connect "Restart Communication" button
         self.ui.pushButtonRestart.clicked.connect(self.restart)
@@ -469,14 +461,6 @@ class GridControl(QtWidgets.QMainWindow):
         grid.set_fan(ser=self.ser, fan=4, voltage=grid.calculate_voltage(self.ui.lcdNumberFan4.value()), lock=self.lock)
         grid.set_fan(ser=self.ser, fan=5, voltage=grid.calculate_voltage(self.ui.lcdNumberFan5.value()), lock=self.lock)
         grid.set_fan(ser=self.ser, fan=6, voltage=grid.calculate_voltage(self.ui.lcdNumberFan6.value()), lock=self.lock)
-
-    # TODO: Update Kraken... EXPERIMENTAL FIRST TEST
-    def update_kraken(self):
-        self.ui.plainTextEditKraken.appendPlainText("Update Kraken called...")
-        self.ui.plainTextEditKraken.appendPlainText("Speed set to " + str(self.ui.spinBoxKrakenSpeed.value()) + "\n")
-        self.x61.speed = self.ui.spinBoxKrakenSpeed.value()
-        status = self.x61.update()
-        self.ui.plainTextEditKraken.appendPlainText(str(status))
 
     def disable_enable_sliders(self):
         """Disables the horizontal sliders if "Automatic" mode is selected.
