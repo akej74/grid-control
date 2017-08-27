@@ -29,7 +29,7 @@ Grid Control is available as a stand-alone application (Python does not need to 
 
 ### OpenHardwareMonitor
 Grid Control uses [OpenHardwareMonitor](https://github.com/openhardwaremonitor/openhardwaremonitor) to get temperature information from the available sensors in the system. 
-- Download latest release of OpenHardwareMonitor [here](http://openhardwaremonitor.org/files/openhardwaremonitor-v0.8.0-beta.zip)
+- Download latest release of OpenHardwareMonitor [here](http://openhardwaremonitor.org/files/openhardwaremonitor-v0.8.0.3-alpha.zip)
 
 ### Driver for the Grid device (not needed for Windows 10)
 The Grid uses a MCP2200 USB-to-UART serial converter from [Microchip](http://www.microchip.com/wwwproducts/en/en546923).
