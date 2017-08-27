@@ -25,6 +25,7 @@ Grid Control is available as a stand-alone application (Python does not need to 
 - Download the latest release from [Releases](https://github.com/akej74/grid-control/releases)
 - Unzip file
 - Run "gridcontrol.exe"
+- NOTE! At first startup, you will get the message "No data from OpenHardwareMonitor found", even if OHM is running. Just configure the sensor data on the "Sensors" tab, after this the warning will not be displayed.
 
 ### OpenHardwareMonitor
 Grid Control uses [OpenHardwareMonitor](https://github.com/openhardwaremonitor/openhardwaremonitor) to get temperature information from the available sensors in the system. 
