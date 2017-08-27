@@ -52,7 +52,7 @@ Run `gridcontrol.py` to start the Grid Control application.
 
 ### PyInstaller
 For packaging, use pyinstaller:
-- `pip install pyinstaller` (For python 3.6+, you will need the latest dev version of pyinstaller)
+- `pip install pyinstaller` (For python 3.6+, you will need the [latest dev version of pyinstaller](https://pythonhosted.org/PyInstaller/when-things-go-wrong.html#getting-the-latest-version)
 
 ### Python IDE
 I recommend the free version of PyCharm IDE for Python development.
