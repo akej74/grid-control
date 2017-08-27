@@ -793,7 +793,7 @@ if __name__ == "__main__":
     win = GridControl()
 
     # Set program version
-    win.setWindowTitle("Grid Control 1.0.4")
+    win.setWindowTitle("Grid Control 1.0.5")
 
     # Show window
     win.show()
