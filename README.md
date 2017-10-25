@@ -27,6 +27,11 @@ Grid Control is available as a stand-alone application (Python does not need to 
 - Run "gridcontrol.exe"
 - NOTE! At first startup, you will get the message "No data from OpenHardwareMonitor found", even if OHM is running. Just configure the sensor data on the "Sensors" tab, after this the warning will not be displayed.
 
+### Note on saving and loading settings
+Grid Control automatically saves all settings when the application is closed ("x" in the top right corner). The settings are stored in the registry at HKEY_CURRENT_USER\Software\GridControl\App\ or HKEY_LOCAL_MACHINE\Software\GridControl\App\
+
+All settings are automatically loaded when Grid Control starts (with default values if no saved settings are found).
+
 ### OpenHardwareMonitor
 Grid Control uses [OpenHardwareMonitor](https://github.com/openhardwaremonitor/openhardwaremonitor) to get temperature information from the available sensors in the system. 
 - Download latest release of OpenHardwareMonitor [here](http://openhardwaremonitor.org/files/openhardwaremonitor-v0.8.0.3-alpha.zip)
