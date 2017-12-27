@@ -20,9 +20,6 @@ from ui.mainwindow import Ui_MainWindow
 ICON_RED_LED = ":/icons/led-red-on.png"
 ICON_GREEN_LED = ":/icons/green-led-on.png"
 
-# TODO: Verify "Fan config" values are valid in the UI
-# TODO: Check for loop with range 1,7
-
 class GridControl(QtWidgets.QMainWindow):
     """Create the UI, based on PyQt5.
     The UI elements are defined in "mainwindow.py" and resource file "resources_rc.py", created in QT Designer.
@@ -100,8 +97,15 @@ class GridControl(QtWidgets.QMainWindow):
         self.manual_value_fan5 = self.ui.horizontalSliderFan5.value()
         self.manual_value_fan6 = self.ui.horizontalSliderFan6.value()
 
+        # Minimize to tray if enabled
+        if self.ui.checkBoxStartMinimized.isChecked():
+            self.hide()
+        else:
+            self.show()
+
         # Initialize communication
         self.init_communication()
+
 
     def setup_ui_logic(self):
         """Define QT signal and slot connections and initializes UI values."""
@@ -793,10 +797,10 @@ if __name__ == "__main__":
     win = GridControl()
 
     # Set program version
-    win.setWindowTitle("Grid Control 1.0.5")
+    win.setWindowTitle("Grid Control 1.0.6")
 
     # Show window
-    win.show()
+    #win.show()
 
     # Disable window resizing
     win.setFixedSize(win.size())
