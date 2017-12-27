@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created by: PyQt5 UI code generator 5.9
+# Created by: PyQt5 UI code generator 5.9.2
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -705,7 +705,7 @@ class Ui_MainWindow(object):
         self.labelHWMonStatus.setFont(font)
         self.labelHWMonStatus.setObjectName("labelHWMonStatus")
         self.groupBoxGridSetup = QtWidgets.QGroupBox(self.frame)
-        self.groupBoxGridSetup.setGeometry(QtCore.QRect(10, 10, 291, 181))
+        self.groupBoxGridSetup.setGeometry(QtCore.QRect(10, 10, 291, 201))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(True)
@@ -791,7 +791,7 @@ class Ui_MainWindow(object):
         self.lcdNumberCurrentGPU.setDigitCount(3)
         self.lcdNumberCurrentGPU.setObjectName("lcdNumberCurrentGPU")
         self.labelGridImage = QtWidgets.QLabel(self.frame)
-        self.labelGridImage.setGeometry(QtCore.QRect(810, 40, 151, 141))
+        self.labelGridImage.setGeometry(QtCore.QRect(810, 0, 151, 141))
         self.labelGridImage.setText("")
         self.labelGridImage.setPixmap(QtGui.QPixmap(":/icons/grid.png"))
         self.labelGridImage.setScaledContents(True)
@@ -820,6 +820,12 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.labelPollingStatus.setFont(font)
         self.labelPollingStatus.setObjectName("labelPollingStatus")
+        self.checkBoxStartMinimized = QtWidgets.QCheckBox(self.frame)
+        self.checkBoxStartMinimized.setGeometry(QtCore.QRect(820, 170, 151, 20))
+        font = QtGui.QFont()
+        font.setPointSize(10)
+        self.checkBoxStartMinimized.setFont(font)
+        self.checkBoxStartMinimized.setObjectName("checkBoxStartMinimized")
         self.tabWidget.addTab(self.tabGeneral, "")
         self.tabSensorConfig = QtWidgets.QWidget()
         self.tabSensorConfig.setObjectName("tabSensorConfig")
@@ -2053,6 +2059,7 @@ class Ui_MainWindow(object):
         self.groupBoxGridSetup_2.setTitle(_translate("MainWindow", "Polling"))
         self.label_155.setText(_translate("MainWindow", "Status"))
         self.labelPollingStatus.setText(_translate("MainWindow", "Status"))
+        self.checkBoxStartMinimized.setText(_translate("MainWindow", "Start minimized"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabGeneral), _translate("MainWindow", "General"))
         self.pushButtonRemoveGPUSensor.setText(_translate("MainWindow", "<- Remove"))
         self.groupBoxCPUSensors.setTitle(_translate("MainWindow", "Value to use"))

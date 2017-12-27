@@ -1765,7 +1765,7 @@ QTreeWidget {
          <x>10</x>
          <y>10</y>
          <width>291</width>
-         <height>181</height>
+         <height>201</height>
         </rect>
        </property>
        <property name="font">
@@ -1991,7 +1991,7 @@ QTreeWidget {
        <property name="geometry">
         <rect>
          <x>810</x>
-         <y>40</y>
+         <y>0</y>
          <width>151</width>
          <height>141</height>
         </rect>
@@ -2065,6 +2065,24 @@ QTreeWidget {
          <string>Status</string>
         </property>
        </widget>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxStartMinimized">
+       <property name="geometry">
+        <rect>
+         <x>820</x>
+         <y>170</y>
+         <width>151</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Start minimized</string>
+       </property>
       </widget>
      </widget>
     </widget>
