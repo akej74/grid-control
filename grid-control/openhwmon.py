@@ -11,6 +11,7 @@ import wmi
 from PyQt5 import QtCore, QtWidgets, QtGui
 
 import helper
+import time
 
 
 def initialize_hwmon():
@@ -76,16 +77,45 @@ def populate_tree(hwmon, treeWidget):
     };
     """
 
-    # Get a list of hardware nodes
-    hardwares = hwmon.Hardware()
+
 
     # Get a list of temperature sensor nodes (filtered to optimize WMI performance)
     sensors = hwmon.Sensor(["Name", "Parent", "Value", "Identifier"], SensorType="Temperature")
 
     # No sensor data (empty list) indicates OpenHWMon is not running
     if not sensors:
-        helper.show_notification("No data from OpenHardwareMonitor found.\n\n"
-                                 "Please make sure OpenHardwareMonitor is running.\n\n")
+        print("OHM not running!")
+
+        dialog = helper.CustomDialog()
+        dialog.setWindowTitle("Waiting for OpenHardwareMonitor")
+        dialog.setWindowIcon(QtGui.QIcon(QtGui.QPixmap(":/icons/grid.png")))
+        dialog.resize(400,100)
+        dialog.layout = QtWidgets.QGridLayout(dialog)
+        label = QtWidgets.QLabel()
+        label.setText("Please start OpenHardwareMonitor\n\n" + "Retries: 30")
+        label.setStyleSheet("font: 12pt;")
+        dialog.layout.addWidget(label)
+        dialog.show()
+
+        retries = 29
+        while retries > 0:
+            print("Sleeping...")
+            QtCore.QCoreApplication.processEvents()
+            time.sleep(1)
+            label.setText("Please start OpenHardwareMonitor\n\n" + "Retries: " + str(retries))
+            print("Retrying...", retries)
+
+            sensors = hwmon.Sensor(["Name", "Parent", "Value", "Identifier"], SensorType="Temperature")
+            if sensors:
+                break
+            else:
+                retries -= 1
+
+        #helper.show_notification("No data from OpenHardwareMonitor found.\n\n"
+        #                         "Please make sure OpenHardwareMonitor is running.\n\n")
+
+    # Get a list of hardware nodes
+    hardwares = hwmon.Hardware()
 
     # The "hardware_nodes" dictionary will hold all hardware nodes and children
     # key = top node identifier

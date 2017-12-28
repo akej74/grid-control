@@ -89,3 +89,12 @@ def show_notification(message):
 
     #Show the window
     message_box.exec_()
+
+class CustomDialog(QtWidgets.QDialog):
+
+    def __init__(self, parent=None):
+        super().__init__(parent)
+
+    def closeEvent(self, event):
+        event.accept()
+        sys.exit(1)

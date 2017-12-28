@@ -42,9 +42,7 @@ class GridControl(QtWidgets.QMainWindow):
         # Set upp the UI
         self.ui.setupUi(self)
 
-        # System tray icon
-        self.trayIcon = SystemTrayIcon(QtGui.QIcon(QtGui.QPixmap(":/icons/grid.png")), self)
-        self.trayIcon.show()
+
 
         # Object for locking the serial port while sending/receiving data
         self.lock = threading.Lock()
@@ -66,11 +64,18 @@ class GridControl(QtWidgets.QMainWindow):
         # Populate the "COM port" combo box with available serial ports
         self.ui.comboBoxComPorts.addItems(self.serial_ports)
 
+        # Read saved UI configuration
+        settings.read_settings(self.config, self.ui, self.hwmon)
+
+
+
         # Populates the tree widget on tab "Sensor Config" with values from OpenHardwareMonitor
         openhwmon.populate_tree(self.hwmon, self.ui.treeWidgetHWMonData)
 
-        # Read saved UI configuration
-        settings.read_settings(self.config, self.ui, self.hwmon)
+        # System tray icon
+        self.trayIcon = SystemTrayIcon(QtGui.QIcon(QtGui.QPixmap(":/icons/grid.png")), self)
+        self.trayIcon.show()
+
 
         # Create a QThread object that will poll the Grid for fan rpm and voltage and HWMon for temperatures
         # The lock is needed in all operations with the serial port
@@ -623,6 +628,7 @@ class GridControl(QtWidgets.QMainWindow):
 
     def restart(self):
         """Update 'Selected CPU and GPU sensors' and restart application"""
+
         # TODO: Add apply button
         self.thread.update_sensors(self.get_cpu_sensor_ids(), self.get_gpu_sensor_ids())
         self.init_communication()
@@ -797,7 +803,7 @@ if __name__ == "__main__":
     win = GridControl()
 
     # Set program version
-    win.setWindowTitle("Grid Control 1.0.6")
+    win.setWindowTitle("Grid Control 1.0.7")
 
     # Show window
     #win.show()
