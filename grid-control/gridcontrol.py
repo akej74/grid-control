@@ -104,7 +104,7 @@ class GridControl(QtWidgets.QMainWindow):
 
         # Minimize to tray if enabled
         if self.ui.checkBoxStartMinimized.isChecked():
-            self.hide()
+            self.setWindowState(QtCore.Qt.WindowMinimized)
         else:
             self.show()
 
@@ -767,6 +767,7 @@ class GridControl(QtWidgets.QMainWindow):
                     event.ignore()
                     self.minimize_to_tray()
                 else:
+                    self.show()
                     event.accept()
 
     def toggle_visibility(self):
