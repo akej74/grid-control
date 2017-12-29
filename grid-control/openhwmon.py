@@ -32,7 +32,7 @@ def initialize_hwmon():
         sys.exit(0)
 
 
-def populate_tree(hwmon, treeWidget):
+def populate_tree(hwmon, treeWidget, start_silently):
     """Read sensor data from OpenHardwareMonitor using the available WMI interface,
     and populated the tree widget with the hardware nodes and sensors.
 
@@ -87,22 +87,24 @@ def populate_tree(hwmon, treeWidget):
         print("OHM not running!")
 
         dialog = helper.CustomDialog()
-        dialog.setWindowTitle("Waiting for OpenHardwareMonitor")
+        dialog.setWindowTitle("Grid Control")
         dialog.setWindowIcon(QtGui.QIcon(QtGui.QPixmap(":/icons/grid.png")))
         dialog.resize(400,100)
         dialog.layout = QtWidgets.QGridLayout(dialog)
         label = QtWidgets.QLabel()
-        label.setText("Please start OpenHardwareMonitor\n\n" + "Retries: 30")
+        label.setText("Waiting for OpenHardwareMonitor to start.\n\n" + "Retries: 30")
         label.setStyleSheet("font: 12pt;")
         dialog.layout.addWidget(label)
-        dialog.show()
+
+        if not start_silently:
+            dialog.show()
 
         retries = 29
         while retries > 0:
             print("Sleeping...")
             QtCore.QCoreApplication.processEvents()
             time.sleep(1)
-            label.setText("Please start OpenHardwareMonitor\n\n" + "Retries: " + str(retries))
+            label.setText("Waiting for OpenHardwareMonitor to start.\n\n" + "Retries: " + str(retries))
             print("Retrying...", retries)
 
             sensors = hwmon.Sensor(["Name", "Parent", "Value", "Identifier"], SensorType="Temperature")
