@@ -1990,10 +1990,10 @@ QTreeWidget {
       <widget class="QLabel" name="labelGridImage">
        <property name="geometry">
         <rect>
-         <x>810</x>
+         <x>830</x>
          <y>0</y>
-         <width>151</width>
-         <height>141</height>
+         <width>131</width>
+         <height>121</height>
         </rect>
        </property>
        <property name="text">
@@ -2070,7 +2070,7 @@ QTreeWidget {
        <property name="geometry">
         <rect>
          <x>820</x>
-         <y>170</y>
+         <y>160</y>
          <width>151</width>
          <height>20</height>
         </rect>
@@ -2082,6 +2082,42 @@ QTreeWidget {
        </property>
        <property name="text">
         <string>Start minimized</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxMinimizeToTray">
+       <property name="geometry">
+        <rect>
+         <x>820</x>
+         <y>190</y>
+         <width>151</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Minimize to tray</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="checkBoxStartSilently">
+       <property name="geometry">
+        <rect>
+         <x>820</x>
+         <y>130</y>
+         <width>151</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Start silently</string>
        </property>
       </widget>
      </widget>
