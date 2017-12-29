@@ -32,8 +32,11 @@ def read_settings(config, ui, hwmon):
     ui.radioButtonManual.setChecked(config.value("manual_control", True, type=bool))
     ui.radioButtonAutomatic.setChecked(config.value("automatic_control", False, type=bool))
 
-    # Start minimized checkbox
+    # Configuration checkboxes
     ui.checkBoxStartMinimized.setChecked(config.value("start_minimized", False, type=bool))
+    ui.checkBoxStartSilently.setChecked(config.value("start_silently", False, type=bool))
+    ui.checkBoxMinimizeToTray.setChecked(config.value("minimize_to_tray", False, type=bool))
+
 
     # Serial port combo box value, default "<Select port>"
     # TODO: Remove unknown/not existing serial ports from stored values
@@ -179,8 +182,11 @@ def save_settings(config, ui):
     config.setValue("automatic_control", ui.radioButtonAutomatic.isChecked())
     config.setValue("manual_control", ui.radioButtonManual.isChecked())
 
-    # Start minimized checkbox
+    # Configuration checkboxes
     config.setValue("start_minimized", ui.checkBoxStartMinimized.isChecked())
+    config.setValue("start_silently", ui.checkBoxStartSilently.isChecked())
+    config.setValue("minimize_to_tray", ui.checkBoxMinimizeToTray.isChecked())
+
 
     #
     # "Sensor Config" tab
