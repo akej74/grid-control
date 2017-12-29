@@ -328,6 +328,10 @@ class GridControl(QtWidgets.QMainWindow):
         self.ui.horizontalSliderCPUTemp.setEnabled(False)
         self.ui.horizontalSliderGPUTemp.setEnabled(False)
 
+        # If manual mode is enabled, disable "Simulate temperatures"
+        if self.ui.radioButtonManual.isChecked():
+            self.ui.groupBoxSimulateTemperatures.setEnabled(False)
+
         # If automatic mode is enabled, disable the horizontal sliders
         if self.ui.radioButtonAutomatic.isChecked():
             self.ui.horizontalSliderFan1.setEnabled(False)
@@ -494,6 +498,9 @@ class GridControl(QtWidgets.QMainWindow):
             self.ui.horizontalSliderFan5.setEnabled(False)
             self.ui.horizontalSliderFan6.setEnabled(False)
 
+            # Enable simulate temperatures
+            self.ui.groupBoxSimulateTemperatures.setEnabled(True)
+
         # If "Manual" radio button was clicked
         else:
             # Restore saved manual values
@@ -511,6 +518,10 @@ class GridControl(QtWidgets.QMainWindow):
             self.ui.horizontalSliderFan4.setEnabled(True)
             self.ui.horizontalSliderFan5.setEnabled(True)
             self.ui.horizontalSliderFan6.setEnabled(True)
+
+            # Disable simulate temperatures
+            self.ui.groupBoxSimulateTemperatures.setEnabled(False)
+            self.ui.checkBoxSimulateTemp.setChecked(False)
 
     def update_fan_speed(self):
         """Update fan speed based on CPU and GPU temperatures."""
