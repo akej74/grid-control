@@ -752,8 +752,11 @@ class GridControl(QtWidgets.QMainWindow):
     def changeEvent(self, event):
         if event.type() == QtCore.QEvent.WindowStateChange:
             if self.windowState() & QtCore.Qt.WindowMinimized:
-                event.ignore()
-                self.minimize_to_tray()
+                if self.ui.checkBoxMinimizeToTray.isChecked():
+                    event.ignore()
+                    self.minimize_to_tray()
+                else:
+                    event.accept()
 
     def toggle_visibility(self):
         if self.isVisible():
