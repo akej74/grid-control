@@ -70,7 +70,7 @@ class GridControl(QtWidgets.QMainWindow):
 
 
         # Populates the tree widget on tab "Sensor Config" with values from OpenHardwareMonitor
-        openhwmon.populate_tree(self.hwmon, self.ui.treeWidgetHWMonData)
+        openhwmon.populate_tree(self.hwmon, self.ui.treeWidgetHWMonData, self.ui.checkBoxStartSilently.isChecked())
 
         # System tray icon
         self.trayIcon = SystemTrayIcon(QtGui.QIcon(QtGui.QPixmap(":/icons/grid.png")), self)
