@@ -32,7 +32,7 @@ Grid Control automatically saves all settings when the application is closed ("x
 
 All settings are automatically loaded when Grid Control starts (with default values if no saved settings are found).
 
-### OpenHardwareMonitor
+### OpenHardwareMonitor / LibreHardwareMonitor
 Grid Control uses [OpenHardwareMonitor](https://github.com/openhardwaremonitor/openhardwaremonitor) to get temperature information from the available sensors in the system. 
 - Download latest release of OpenHardwareMonitor [here](http://openhardwaremonitor.org/files/openhardwaremonitor-v0.8.0.3-alpha.zip)
 - *UPDATE* - There is a fork of OpenHardwareMonitor called **LibreHardwareMonitor**, available [here](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor) that is in active development
